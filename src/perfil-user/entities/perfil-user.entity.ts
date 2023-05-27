@@ -46,11 +46,11 @@ phone?:string
 roles:string[]
 
 @OneToMany(()=> OrchardEntity,orchard=>orchard.user)
-orchards:OrchardEntity
+orchards:OrchardEntity[]
 
 @OneToMany(()=> StudentEntity,student=>student.user)
-students:StudentEntity
+students:StudentEntity[]
 
 @OneToMany(()=>NoticeEntity,notice=>notice.user)
-notices:NoticeEntity
+notices:NoticeEntity[]
 }
