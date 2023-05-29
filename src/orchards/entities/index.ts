@@ -1,2 +1,2 @@
 export { OrchardEntity } from './orchard.entity';
-export { PlantCategoriesEntity } from './plant.entity';
+export { PlantEntity } from './plant.entity';

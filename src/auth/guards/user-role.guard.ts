@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
-import { PerfilUserEntity } from 'src/perfil-user/entities/perfil-user.entity';
+import { UserEntity } from 'src/perfil-user/entities/perfil-user.entity';
 
 @Injectable()
 export class UserRoleGuard implements CanActivate {
@@ -25,7 +25,7 @@ export class UserRoleGuard implements CanActivate {
     if (ValidRoles.length === 0) return true;
 
     const req = context.switchToHttp().getRequest();
-    const user = req.user as PerfilUserEntity;
+    const user = req.user as UserEntity;
 
     if (!user) throw new BadRequestException('User not found');
 

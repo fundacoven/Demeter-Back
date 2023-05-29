@@ -31,11 +31,11 @@ export class OrchardsController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateOrchardDto: UpdateOrchardDto) {
-    return this.orchardsService.update(id, updateOrchardDto);
+    return this.orchardsService.update({ id }, updateOrchardDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.orchardsService.remove(id);
+    return this.orchardsService.delete({ id });
   }
 }

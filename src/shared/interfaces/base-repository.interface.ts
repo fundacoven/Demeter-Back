@@ -6,6 +6,7 @@ import {
   FindOneOptions,
   FindOptionsWhere,
 } from 'typeorm';
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 
 export interface IBaseRepository<Entity extends BaseEntity> {
   create(data: DeepPartial<Entity>): Entity;
@@ -15,8 +16,12 @@ export interface IBaseRepository<Entity extends BaseEntity> {
   findOneBy(filterCondition: FindOptionsWhere<Entity>): Promise<Entity>;
   findOne(filterCondition: FindOneOptions<Entity>): Promise<Entity>;
   findAll(options?: FindManyOptions<Entity>): Promise<Entity[]>;
+  update(
+    criteria: FindOptionsWhere<Entity>,
+    partialEntity: QueryDeepPartialEntity<Entity>,
+  );
   remove(data: Entity): Promise<Entity>;
-  delete(options: FindOptionsWhere<Entity>): Promise<DeleteResult>;
+  delete(options: any): Promise<DeleteResult>;
   findWithRelations(relations: FindManyOptions<Entity>): Promise<Entity[]>;
   preload(entityLike: DeepPartial<Entity>): Promise<Entity>;
 }

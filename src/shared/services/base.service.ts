@@ -44,6 +44,10 @@ export abstract class BaseService<Entity extends BaseEntity>
     return await this.repository.findAll(options);
   }
 
+  public async update(criteria: FindOptionsWhere<Entity>, partialEntity: any) {
+    return this.repository.update(criteria, partialEntity);
+  }
+
   public async remove(data: Entity): Promise<Entity> {
     return await this.repository.remove(data);
   }

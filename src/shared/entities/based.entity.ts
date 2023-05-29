@@ -3,11 +3,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   Entity,
-  BaseEntity as TypeormBaseEntity,
+  BaseEntity,
 } from 'typeorm';
 
 @Entity()
-export class BasedEntity extends TypeormBaseEntity {
+export class BasedEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
   @CreateDateColumn({ select: false })

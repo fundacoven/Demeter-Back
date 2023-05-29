@@ -1,4 +1,4 @@
-import { PerfilUserEntity } from 'src/perfil-user/entities/perfil-user.entity';
+import { UserEntity } from 'src/users/entities/user.entity';
 import { BasedEntity } from 'src/shared/entities';
 import { Entity, Column, ManyToOne } from 'typeorm';
 import { PlantEntity } from './plant.entity';
@@ -20,6 +20,6 @@ export class OrchardEntity extends BasedEntity {
   @ManyToOne(() => PlantEntity, (plant) => plant.orchard)
   plant: PlantEntity;
 
-  @ManyToOne(() => PerfilUserEntity, (user) => user.orchards)
-  user: PerfilUserEntity;
+  @ManyToOne(() => UserEntity, (user) => user.orchards)
+  user: UserEntity;
 }

@@ -12,8 +12,8 @@ import { CreatePerfilUserDto } from './dto/create-perfil-user.dto';
 import { UpdatePerfilUserDto } from './dto/update-perfil-user.dto';
 import { Logindto } from './dto';
 import { getUser } from '../shared/decorators/get-user.decorator';
-import { PerfilUserEntity } from './entities/perfil-user.entity';
-import { Auth } from './auth/decorators/auth.decorator';
+import { UserEntity } from './entities/perfil-user.entity';
+import { Auth } from '../auth/decorators/auth.decorator';
 import { ValidRoles } from 'src/shared/interfaces';
 
 @Controller('auth')
@@ -46,7 +46,7 @@ export class PerfilUserController {
   @Get('private')
   //aqui pondras por el auth si es validRoles..admin o user los que trngan permiso de acceder a dicha ruta
   @Auth(ValidRoles.user)
-  testingPrivateRoute(@getUser() user: PerfilUserEntity) {
+  testingPrivateRoute(@getUser() user: UserEntity) {
     return { user, Headers };
   }
 }

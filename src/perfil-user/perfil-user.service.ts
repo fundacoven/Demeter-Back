@@ -7,7 +7,7 @@ import {
 import { CreatePerfilUserDto, UpdatePerfilUserDto, Logindto } from './dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { PerfilUserEntity } from './entities/perfil-user.entity';
+import { UserEntity } from './entities/perfil-user.entity';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 
@@ -15,8 +15,8 @@ import { JwtService } from '@nestjs/jwt';
 export class PerfilUserService {
   constructor(
     private jwtService: JwtService,
-    @InjectRepository(PerfilUserEntity)
-    private readonly userRepository: Repository<PerfilUserEntity>,
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
   ) {}
 
   async register(createPerfilUserDto: CreatePerfilUserDto) {

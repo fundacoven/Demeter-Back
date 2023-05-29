@@ -7,6 +7,7 @@ import {
   Repository,
 } from 'typeorm';
 import { IBaseRepository } from '../interfaces';
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 
 export abstract class BaseRepository<Entity extends BaseEntity>
   implements IBaseRepository<Entity>
@@ -48,6 +49,13 @@ export abstract class BaseRepository<Entity extends BaseEntity>
 
   public async remove(data: Entity): Promise<Entity> {
     return await this.entity.remove(data);
+  }
+
+  public async update(
+    criteria: FindOptionsWhere<Entity>,
+    partialEntity: QueryDeepPartialEntity<Entity>,
+  ) {
+    return await this.entity.update(criteria, partialEntity);
   }
 
   public async delete(options: FindOptionsWhere<Entity>) {

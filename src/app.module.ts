@@ -2,37 +2,25 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { EnvConfiguration } from './config/envConfig';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PerfilUserModule } from './perfil-user/perfil-user.module';
-import { StudentsModule } from './students/students.module';
-import { NoticesModule } from './notices/notices.module';
-import { OrchardsModule } from './orchards/orchards.module';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
-
+import { AppModules } from './modules';
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true,
-    load:[EnvConfiguration]
-  }),
-  TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: process.env.DB_HOST,
-    port: +process.env.DB_PORT,
-    database: process.env.DB_NAME,
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    autoLoadEntities: true,
-    synchronize: true,
-  }),
-  PerfilUserModule,
-  StudentsModule,
-  NoticesModule,
-  OrchardsModule,
-  AuthModule,
-  UsersModule,
-],
-  controllers: [],
-  providers: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [EnvConfiguration],
+    }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: process.env.DB_HOST,
+      port: +process.env.DB_PORT,
+      database: process.env.DB_NAME,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+    ...AppModules,
+  ],
 })
 export class AppModule {}
