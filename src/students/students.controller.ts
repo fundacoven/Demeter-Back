@@ -1,5 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { StudentsService } from './students.service';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { StudentsService } from './services/students.service';
 import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { Auth } from 'src/perfil-user/auth/decorators/auth.decorator';
@@ -12,8 +20,8 @@ export class StudentsController {
   create(@Body() createStudentDto: CreateStudentDto) {
     return this.studentsService.create(createStudentDto);
   }
-  
-  @Get("/alo")
+
+  @Get('/alo')
   findAll() {
     return this.studentsService.findAll();
   }
@@ -32,5 +40,4 @@ export class StudentsController {
   remove(@Param('id') id: string) {
     return this.studentsService.remove(+id);
   }
-
 }

@@ -1,7 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { OrchardsService } from './orchards.service';
-import { CreateOrchardDto } from './dto/create-orchard.dto';
-import { UpdateOrchardDto } from './dto/update-orchard.dto';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
+import { CreateOrchardDto, UpdateOrchardDto } from '../dto';
+import { OrchardsService } from '../services';
 
 @Controller('orchards')
 export class OrchardsController {
@@ -18,17 +25,17 @@ export class OrchardsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.orchardsService.findOne(+id);
+  findOneBy(@Param('id') id: string) {
+    return this.orchardsService.findOneBy({ id });
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateOrchardDto: UpdateOrchardDto) {
-    return this.orchardsService.update(+id, updateOrchardDto);
+    return this.orchardsService.update(id, updateOrchardDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.orchardsService.remove(+id);
+    return this.orchardsService.remove(id);
   }
 }

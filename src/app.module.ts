@@ -6,6 +6,8 @@ import { PerfilUserModule } from './perfil-user/perfil-user.module';
 import { StudentsModule } from './students/students.module';
 import { NoticesModule } from './notices/notices.module';
 import { OrchardsModule } from './orchards/orchards.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 
 @Module({
@@ -27,6 +29,8 @@ import { OrchardsModule } from './orchards/orchards.module';
   StudentsModule,
   NoticesModule,
   OrchardsModule,
+  AuthModule,
+  UsersModule,
 ],
   controllers: [],
   providers: [],

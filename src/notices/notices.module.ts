@@ -1,13 +1,23 @@
 import { Module } from '@nestjs/common';
-import { NoticesService } from './notices.service';
-import { NoticesController } from './notices.controller';
-import {TypeOrmModule} from "@nestjs/typeorm"
-import { NoticeEntity } from './entities/notice.entity';
-import { NoticesCategoriesEntity } from './entities/notices-categories.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { NoticesService } from './services';
+import { NoticesController } from './controllers';
+import {
+  NoticeCategoryEntity,
+  NoticeEntity,
+  NoticeImageEntity,
+} from './entities';
 
 @Module({
+  imports: [
+    TypeOrmModule.forFeature([
+      NoticeEntity,
+      NoticeCategoryEntity,
+      NoticeImageEntity,
+    ]),
+  ],
   controllers: [NoticesController],
   providers: [NoticesService],
-  imports:[TypeOrmModule.forFeature([NoticeEntity,NoticesCategoriesEntity])]
+  exports: [NoticesService],
 })
 export class NoticesModule {}

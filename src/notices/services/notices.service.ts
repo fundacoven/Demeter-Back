@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateNoticeDto } from './dto/create-notice.dto';
-import { UpdateNoticeDto } from './dto/update-notice.dto';
+import { CreateNoticeDto, UpdateNoticeDto } from '../dto';
 
 @Injectable()
 export class NoticesService {
