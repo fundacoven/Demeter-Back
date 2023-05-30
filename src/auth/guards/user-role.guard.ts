@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
-import { UserEntity } from 'src/perfil-user/entities/perfil-user.entity';
+import { UserEntity } from '../../users/entities/user.entity';
 
 @Injectable()
 export class UserRoleGuard implements CanActivate {

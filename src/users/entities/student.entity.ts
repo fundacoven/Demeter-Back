@@ -1,6 +1,6 @@
 import { BasedEntity } from 'src/shared/entities';
 import { Entity, Column, ManyToOne } from 'typeorm';
-import { UserEntity } from './user.entity';
+import { InstitutionEntity } from '../modules/institution/institution.entity';
 
 @Entity({ name: 'students' })
 export class StudentEntity extends BasedEntity {
@@ -19,6 +19,6 @@ export class StudentEntity extends BasedEntity {
   @Column('text', { nullable: true })
   cbi?: string;
 
-  @ManyToOne(() => UserEntity, (user) => user.students)
-  user: UserEntity;
+  @ManyToOne(() => InstitutionEntity, (institution) => institution.students)
+  institution: InstitutionEntity;
 }
