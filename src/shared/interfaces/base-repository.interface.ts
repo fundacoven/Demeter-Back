@@ -5,6 +5,7 @@ import {
   FindManyOptions,
   FindOneOptions,
   FindOptionsWhere,
+  UpdateResult,
 } from 'typeorm';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 
@@ -19,7 +20,7 @@ export interface IBaseRepository<Entity extends BaseEntity> {
   update(
     criteria: FindOptionsWhere<Entity>,
     partialEntity: QueryDeepPartialEntity<Entity>,
-  );
+  ): Promise<UpdateResult>;
   remove(data: Entity): Promise<Entity>;
   delete(options: any): Promise<DeleteResult>;
   findWithRelations(relations: FindManyOptions<Entity>): Promise<Entity[]>;
