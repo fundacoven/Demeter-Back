@@ -7,6 +7,9 @@ import { NoticeEntity } from "src/notices/entities";
 @Entity({name:"Institution"})
 export class InstitutionEntity extends BasedEntity {
 
+@Column("text")
+rif:string
+
 @Column('text', { nullable: true })
 state?: string;
 

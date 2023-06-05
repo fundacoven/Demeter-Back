@@ -2,7 +2,10 @@ import { NoticeEntity } from 'src/notices/entities/notice.entity';
 import { OrchardEntity } from 'src/orchards/entities/orchard.entity';
 import { BasedEntity } from 'src/shared/entities';
 import { StudentEntity } from './student.entity';
-import { Entity, Column, OneToMany } from 'typeorm';
+import { Entity, Column, OneToMany, OneToOne, JoinColumn } from 'typeorm';
+import { AdminEntity } from '../modules/admin/admin.entity';
+import { InstitutionEntity } from '../modules/institution/institution.entity';
+import { TaxpayersEntity } from '../modules/taxpayers/taxpayers.entity';
 
 @Entity("users")
 export class UserEntity extends BasedEntity {
@@ -30,4 +33,15 @@ export class UserEntity extends BasedEntity {
   @Column('text', { array: true, default: ['user'] })
   roles: string[];
 
+  @OneToOne(()=>AdminEntity)
+  @JoinColumn()
+  admin:AdminEntity
+
+  @OneToOne(()=>InstitutionEntity)
+  @JoinColumn()
+  institution:InstitutionEntity
+
+  @OneToOne(()=>TaxpayersEntity)
+  @JoinColumn()
+  taxpayer:TaxpayersEntity
 }

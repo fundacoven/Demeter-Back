@@ -9,6 +9,8 @@ import {
 } from '@nestjs/common';
 import { CreateOrchardDto, UpdateOrchardDto } from '../dto';
 import { OrchardsService } from '../services';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { ValidRoles } from 'src/shared/enums';
 
 @Controller('orchards')
 export class OrchardsController {
@@ -38,4 +40,6 @@ export class OrchardsController {
   remove(@Param('id') id: string) {
     return this.orchardsService.delete({ id });
   }
+
+
 }

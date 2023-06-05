@@ -18,6 +18,7 @@ import { RecoveryPasswordEntity } from './entities/recovery-password.entity';
               signOptions: { expiresIn: '2h' },
             }),
           }),
-    ]
+    ],
+    exports:[JwtModule,AuthModule]
 })
 export class AuthModule {}

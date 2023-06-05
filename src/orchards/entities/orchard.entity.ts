@@ -18,6 +18,9 @@ export class OrchardEntity extends BasedEntity {
   @Column('text', { default: '0kg' })
   harvested: string;
 
+  @Column("bool",{default:true})
+  is_actived:boolean
+
   @ManyToOne(() => PlantEntity, (plant) => plant.orchard)
   plant: PlantEntity;
 
