@@ -7,6 +7,9 @@ export class PlantEntity extends BasedEntity {
   @Column('text')
   name: string;
 
+  @Column("text")
+  harvest_time:string
+
   @OneToMany(() => OrchardEntity, (orchard) => orchard.plant)
   orchard: OrchardEntity;
 }

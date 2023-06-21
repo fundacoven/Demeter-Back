@@ -2,7 +2,7 @@ import { BasedEntity } from 'src/shared/entities';
 import { Entity, Column, ManyToOne, OneToMany } from 'typeorm';
 import { NoticeCategoryEntity } from './notice-category.entity';
 import { NoticeImageEntity } from './notice-image.entity';
-import { UserEntity } from 'src/users/entities/user.entity';
+import { InstitutionEntity } from 'src/users/modules/institution/institution.entity';
 
 @Entity({ name: 'notices' })
 export class NoticeEntity extends BasedEntity {
@@ -21,6 +21,6 @@ export class NoticeEntity extends BasedEntity {
   @OneToMany(() => NoticeImageEntity, (image) => image.notice)
   images: NoticeImageEntity[];
 
-  @ManyToOne(() => UserEntity, (user) => user.notices)
-  user: UserEntity;
+  @ManyToOne(() => InstitutionEntity, (institution) => institution.notices)
+  institution: InstitutionEntity;
 }

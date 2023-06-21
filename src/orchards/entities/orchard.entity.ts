@@ -2,6 +2,7 @@ import { UserEntity } from 'src/users/entities/user.entity';
 import { BasedEntity } from 'src/shared/entities';
 import { Entity, Column, ManyToOne } from 'typeorm';
 import { PlantEntity } from './plant.entity';
+import { InstitutionEntity } from 'src/users/modules/institution/institution.entity';
 
 @Entity({ name: 'orchards' })
 export class OrchardEntity extends BasedEntity {
@@ -17,9 +18,12 @@ export class OrchardEntity extends BasedEntity {
   @Column('text', { default: '0kg' })
   harvested: string;
 
+  @Column("bool",{default:true})
+  is_actived:boolean
+
   @ManyToOne(() => PlantEntity, (plant) => plant.orchard)
   plant: PlantEntity;
 
-  @ManyToOne(() => UserEntity, (user) => user.orchards)
-  user: UserEntity;
+  @ManyToOne(() => InstitutionEntity, (institution) => institution.orchards)
+  institution: InstitutionEntity;
 }

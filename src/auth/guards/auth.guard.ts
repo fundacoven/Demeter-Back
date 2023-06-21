@@ -7,7 +7,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-import { UserEntity } from '../../perfil-user/entities/perfil-user.entity';
+import { UserEntity } from '../../users/entities/user.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

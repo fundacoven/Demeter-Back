@@ -1,4 +1,4 @@
-import { BasedEntity } from 'src/shared/based.entity';
+import { BasedEntity } from 'src/shared/entities';
 import { Entity, Column, ManyToOne } from 'typeorm';
 import { NoticeEntity } from './notice.entity';
 
