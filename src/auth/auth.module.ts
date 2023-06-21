@@ -4,9 +4,10 @@ import { ConfigModule,ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity} from 'src/users/entities/user.entity';
 import { RecoveryPasswordEntity } from './entities/recovery-password.entity';
+import { AuthGuard } from './guards/auth.guard';
 
 @Module({
-
+    providers:[AuthGuard],
     imports:[
         TypeOrmModule.forFeature([UserEntity, RecoveryPasswordEntity]),
         JwtModule.registerAsync({
@@ -19,6 +20,6 @@ import { RecoveryPasswordEntity } from './entities/recovery-password.entity';
             }),
           }),
     ],
-    exports:[JwtModule,AuthModule]
+    exports:[JwtModule,AuthModule,AuthGuard]
 })
 export class AuthModule {}

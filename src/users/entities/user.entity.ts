@@ -30,18 +30,10 @@ export class UserEntity extends BasedEntity {
   @Column('text', { nullable: true })
   phone?: string;
 
+  @Column("text",{ nullable: true })
+  cedula:string
+
   @Column('text', { array: true, default: ['user'] })
   roles: string[];
 
-  @OneToOne(()=>AdminEntity)
-  @JoinColumn()
-  admin:AdminEntity
-
-  @OneToOne(()=>InstitutionEntity)
-  @JoinColumn()
-  institution:InstitutionEntity
-
-  @OneToOne(()=>TaxpayersEntity)
-  @JoinColumn()
-  taxpayer:TaxpayersEntity
 }
