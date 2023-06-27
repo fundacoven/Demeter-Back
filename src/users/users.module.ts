@@ -12,14 +12,23 @@ import { TaxpayersEntity } from './modules/taxpayers/taxpayers.entity';
 import { InstitutionController } from './controllers/institution.controller';
 import { InstitutionRepository } from './repositories/institution.repositories';
 import { InstitutionServices } from './services/institution.service';
+import { StudentRepository } from './repositories/student.repository';
+import { StudentServices } from './services/student.service';
+import { StudentController } from './controllers/student.controller';
 
 
 @Module({
-  controllers: [UsersController, InstitutionController],
+  controllers: [UsersController, InstitutionController,StudentController],
   imports:[TypeOrmModule.forFeature([AdminEntity,InstitutionEntity,UserEntity,StudentEntity,TaxpayersEntity]),
   AuthModule
   ],
-  providers: [UsersService,UserRepository,InstitutionServices,InstitutionRepository],
+  providers: [UsersService,
+    UserRepository,
+    InstitutionServices,
+    InstitutionRepository,
+    StudentRepository,
+    StudentServices
+  ],
   exports: [UsersService],
 })
 export class UsersModule {}

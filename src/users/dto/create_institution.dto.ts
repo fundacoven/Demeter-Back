@@ -1,5 +1,4 @@
-import {IsString, IsEmail, MinLength, MaxLength, IsEmpty, IsEnum } from 'class-validator';
-import { ValidRoles } from 'src/shared/enums';
+import {IsString, IsEmail, MaxLength } from 'class-validator';
 
 
 export class CreateInstitutionDto{
