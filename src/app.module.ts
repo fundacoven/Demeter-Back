@@ -19,6 +19,7 @@ import { AppModules } from './modules';
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
       synchronize: true,
+      ssl: true,
     }),
     ...AppModules,
   ],
