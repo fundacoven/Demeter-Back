@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { EnvConfiguration } from './config/envConfig';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppModules } from './modules';
+import { HelloController } from './hello.controller';
+import { HelloService } from './hello.service';
 
 @Module({
   imports: [
@@ -22,5 +24,7 @@ import { AppModules } from './modules';
     }),
     ...AppModules,
   ],
+  controllers: [HelloController],
+  providers: [HelloService],
 })
 export class AppModule {}
