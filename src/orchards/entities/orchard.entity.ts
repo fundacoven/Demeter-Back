@@ -1,32 +1,29 @@
-import { PerfilUserEntity } from "src/perfil-user/entities/perfil-user.entity";
-import { BasedEntity } from "src/shared/based.entity";
-import {
-    Entity,
-    Column,
-    OneToMany,
-    ManyToOne,
-    BeforeInsert,
-} from 'typeorm';
-import { PlantCategoriesEntity } from "./plant-categories.entity";
+import { UserEntity } from 'src/users/entities/user.entity';
+import { BasedEntity } from 'src/shared/entities';
+import { Entity, Column, ManyToOne } from 'typeorm';
+import { PlantEntity } from './plant.entity';
+import { InstitutionEntity } from 'src/users/modules/institution/institution.entity';
 
-@Entity({name:"orchards"})
+@Entity({ name: 'orchards' })
 export class OrchardEntity extends BasedEntity {
+  @Column('numeric', { default: 0 })
+  irrigations_carried_out: number;
 
-@Column("numeric",{default:0})
-irrigations_carried_out:number
+  @Column('numeric', { default: 0 })
+  used_fertilizer: number;
 
-@Column("numeric",{default:0})
-used_fertilizer:number
+  @Column('text', { default: '0kg' })
+  expected_production: string;
 
-@Column("text",{default:"0kg"})
-expected_production:string
+  @Column('text', { default: '0kg' })
+  harvested: string;
 
-@Column("text",{default:"0kg"})
-harvested:string
+  @Column("bool",{default:true})
+  is_actived:boolean
 
-@ManyToOne(()=>PlantCategoriesEntity,plant=>plant.orchard)
-plant:PlantCategoriesEntity
+  @ManyToOne(() => PlantEntity, (plant) => plant.orchard)
+  plant: PlantEntity;
 
-@ManyToOne(()=>PerfilUserEntity,user=>user.orchards)
-user:PerfilUserEntity
+  @ManyToOne(() => InstitutionEntity, (institution) => institution.orchards)
+  institution: InstitutionEntity;
 }
